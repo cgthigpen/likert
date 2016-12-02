@@ -148,7 +148,8 @@ likert.bar.plot <- function(l,
 				geom_hline(yintercept=0) +
 				geom_bar(data=results.low[nrow(results.low):1,], 
 						 aes(fill=variable), stat='identity') + 
-				geom_bar(data=results.high, aes(fill=variable), stat='identity')
+				geom_bar(data=results.high, aes(fill=variable, group=rev(variable)), 
+					 stat='identity')
 			names(cols) <- levels(results$variable)
 			p <- p + scale_fill_manual(legend, breaks=names(cols), values=cols, drop=FALSE)
 		} else {
